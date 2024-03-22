@@ -1,61 +1,92 @@
-# Importamos la librería datetime para manejar fechas
-from datetime import datetime
+# ///////////////////LISTAS////////////////
 
-# Definimos la estructura de datos para almacenar las tareas
-tareas = []
+lista = list(range(1, 11))
 
-# Función para agregar una nueva tarea
-def agregar_tarea():
-    descripcion = input("Ingrese la descripción de la tarea: ")
-    fecha_limite = input("Ingrese la fecha límite (formato YYYY-MM-DD): ")
-    tarea = {
-        "descripcion": descripcion,
-        "fecha_limite": datetime.strptime(fecha_limite, "%Y-%m-%d"),
-        "estado": "pendiente",
-    }
-    tareas.append(tarea)
+print("Lista original:", lista)
 
-# Función para listar todas las tareas
-def listar_tareas():
-    for tarea in tareas:
-        print(f"ID: {tareas.index(tarea)}")
-        print(f"Descripción: {tarea['descripcion']}")
-        print(f"Fecha límite: {tarea['fecha_limite'].strftime('%Y-%m-%d')}")
-        print(f"Estado: {tarea['estado']}")
-        print("---")
+lista_ascendente = sorted(lista)
+print("Lista ordenada ascendente:", lista_ascendente)
 
-# Función para completar una tarea
-def completar_tarea():
-    id_tarea = int(input("Ingrese el ID de la tarea a completar: "))
-    tareas[id_tarea]["estado"] = "completada"
+lista_descendente = sorted(lista, reverse=True)
+print("Lista ordenada descendente:", lista_descendente)
 
-# Función para eliminar una tarea
-def eliminar_tarea():
-    id_tarea = int(input("Ingrese el ID de la tarea a eliminar: "))
-    del tareas[id_tarea]
+minimo = min(lista)
+print("Número más pequeño:", minimo)
 
-# Menú principal
-while True:
-    print("**Sistema de gestión de tareas**")
-    print("1. Agregar tarea")
-    print("2. Listar tareas")
-    print("3. Completar tarea")
-    print("4. Eliminar tarea")
-    print("5. Salir")
+maximo = max(lista)
+print("Número más grande:", maximo)
 
-    opcion = int(input("Seleccione una opción: "))
+contador_5 = lista.count(5)
+print("Número de veces que aparece el 5:", contador_5)
 
-    if opcion == 1:
-        agregar_tarea()
-    elif opcion == 2:
-        listar_tareas()
-    elif opcion == 3:
-        completar_tarea()
-    elif opcion == 4:
-        eliminar_tarea()
-    elif opcion == 5:
-        break
-    else:
-        print("Opción no válida.")
+lista.remove(5)
+print("Lista sin el número 5:", lista)
 
-print("¡Hasta luego!")
+lista.append(11)
+print("Lista con el número 11 agregado:", lista)
+
+# ///////////////////TUPLAS////////////////
+
+tupla = ("Hola", "mundo", "Python")
+
+print("Tupla original:", tupla)
+
+tupla_ordenada = tuple(sorted(tupla))
+print("Tupla ordenada alfabéticamente:", tupla_ordenada)
+
+primera_palabra = tupla[0]
+print("Primera palabra en la tupla:", primera_palabra)
+
+ultima_palabra = tupla[-1]
+print("Última palabra en la tupla:", ultima_palabra)
+
+numero_palabras = len(tupla)
+print("Número de palabras en la tupla:", numero_palabras)
+
+tupla_sin_mundo = tuple(word for word in tupla if word != "mundo")
+print("Tupla sin la palabra 'mundo':", tupla_sin_mundo)
+
+tupla_con_hola = tupla + ("Hola",)
+print("Tupla con la palabra 'Hola' agregada:", tupla_con_hola)
+
+# ///////////////////CONJUNTOS////////////////
+
+conjunto_numeros = set(range(1, 11))
+
+print("Conjunto de números del 1 al 10:", conjunto_numeros)
+
+conjunto_numeros.add(11)
+
+conjunto_numeros.remove(5)
+
+num_elementos = len(conjunto_numeros)
+print("Número de elementos en el conjunto:", num_elementos)
+
+print("¿El número 5 está en el conjunto?", 5 in conjunto_numeros)
+
+print("¿El número 11 está en el conjunto?", 11 in conjunto_numeros)
+
+conjunto_palabras = {"Hola", "mundo", "Python"}
+
+print("Conjunto de palabras:", conjunto_palabras)
+
+print("¿La palabra 'Hola' está en el conjunto?", "Hola" in conjunto_palabras)
+
+print("¿La palabra 'mundo' está en el conjunto?", "mundo" in conjunto_palabras)
+
+# ///////////////////DICCIONARIOS////////////////
+
+dias_semana = {
+    "Lunes": 1,
+    "Martes": 2,
+    "Miércoles": 3,
+    "Jueves": 4,
+    "Viernes": 5,
+    "Sábado": 6,
+    "Domingo": 7
+}
+
+print("Diccionario de días de la semana:", dias_semana)
+
+numero_lunes = dias_semana["Lunes"]
+print("Número del día de la semana 'Lunes':", numero_lunes)
